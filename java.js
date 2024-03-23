@@ -1,100 +1,31 @@
-(function () {
+function check() {
 
-  const second = 1000,
+  var checkBox = document.getElementById("checbox");
 
-        minute = second * 60,
+  var text1 = document.getElementsByClassName("text1");
 
-        hour = minute * 60,
+  var text2 = document.getElementsByClassName("text2");
 
-        day = hour * 24;
-		
-		 let today = new Date(),
 
-      dd = String(today.getDate()).padStart(2, "0"),
 
-      mm = String(today.getMonth() + 1).padStart(2, "0"),
+  for (var i = 0; i < text1.length; i++) {
 
-      yyyy = today.getFullYear(),
+    if (checkBox.checked == true) {
 
-      nextYear = yyyy + 1,
+      text1[i].style.display = "block";
 
-      dayMonth = "08/03/",  //дата окончания
+      text2[i].style.display = "none";
 
-      date = dayMonth + yyyy;
+    } else if (checkBox.checked == false) {
 
-  
+      text1[i].style.display = "none";
 
-  today = mm + "/" + dd + "/" + yyyy;
+      text2[i].style.display = "block";
 
-  if (today > date) {
-
-    date = dayMonth + nextYear;
+    }
 
   }
-  const countDown = new Date(date).getTime(),
 
-      x = setInterval(function() {    
+}
 
-
-
-        const now = new Date().getTime(),
-
-              distance = countDown - now;
-
-
-
-        document.getElementById("days").innerText = Math.floor(distance / (day)),
-
-          document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
-
-          document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-
-          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
-
-
-
-        if (distance < 0) {
-
-          document.getElementById("headline").innerText = "Акция!";
-
-          document.getElementById("countdown").style.display = "none";
-
-          document.getElementById("content").style.display = "block";
-
-          clearInterval(x);
-
-        }
-
-        //seconds
-
-      }, 0)
-
-  }());
-  var divToggleVis = document.getElementById('spoiler_text');
-
-var button = document.getElementById('spoiler_button');
-
-
-
-button.onclick = function() {
-
-    if (divToggleVis.className === 'fadeout') {
-
-        divToggleVis.className = 'fadein';
-
-    } else {
-
-        divToggleVis.className = 'fadeout';
-
-    }
-	if (button.innerHTML === 'узнать') {
-
-        button.innerHTML = 'скрыть';
-
-    } else {
-
-        button.innerHTML = 'узнать';
-
-    }
-
-};
+check();
